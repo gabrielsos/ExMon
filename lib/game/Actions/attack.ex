@@ -11,20 +11,22 @@ defmodule ExMon.Game.Actions.Attack do
     |> Game.fetchPlayer()
     |> Map.get(:life)
     |> calculateTotalLife(damage)
-    |> updateOpponentLife(opponent)
+    |> updateOpponentLife(opponent, damage)
   end
 
-  defp updateOpponentLife(life, opponent) do
+  defp updateOpponentLife(life, opponent, damage) do
     opponent
     |> Game.fetchPlayer()
     |> Map.put(:life, life)
-    |> updateGame(opponent)
+    |> updateGame(opponent, damage)
   end
 
-  defp updateGame(player, opponent) do
+  defp updateGame(player, opponent, damage) do
     Game.info()
     |> Map.put(opponent, player)
     |> Game.update()
+
+    Game.Status.printMoveMessage(opponent, :attack, damage)
   end
 
   defp calculateTotalLife(life, damage) when life - damage < 0, do: 0
