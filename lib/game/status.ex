@@ -28,4 +28,8 @@ defmodule ExMon.Game.Status do
   def printMoveMessage(:computer, :attack, damage) do
     IO.puts("\n======= The Player attacked the computer dealing #{damage} damage. ======= \n")
   end
+
+  def printMoveMessage(player, :heal, life) do
+    IO.puts("\n======= The #{player} healed itself to #{life} life points. ======= \n")
+  end
 end
