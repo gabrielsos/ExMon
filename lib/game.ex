@@ -21,10 +21,10 @@ defmodule ExMon.Game do
   def fetchPlayer(player), do: Map.get(info(), player)
 
   defp updateGameStatus(
-      %{player: %Player{life: playerLife}, computer: %Player{life: computerLife}} = state
-    )
-    when playerLife == 0 or computerLife == 0,
-    do: Map.put(state, :status, :gameOver)
+         %{player: %Player{life: playerLife}, computer: %Player{life: computerLife}} = state
+       )
+       when playerLife == 0 or computerLife == 0,
+       do: Map.put(state, :status, :gameOver)
 
   defp updateGameStatus(state) do
     state

@@ -21,7 +21,7 @@ defmodule ExMon do
     |> Map.get(:status)
     |> handleStatus(move)
 
-    computerMove(Game.info)
+    computerMove(Game.info())
   end
 
   defp handleStatus(:gameOver, _move), do: Status.printRoundMessage(Game.info())
@@ -33,6 +33,7 @@ defmodule ExMon do
   end
 
   defp doMove({:error, move}), do: Status.printWrongMoveMessage(move)
+
   defp doMove({:ok, move}) do
     case move do
       :moveHeal -> Actions.heal()

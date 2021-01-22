@@ -1,5 +1,5 @@
 defmodule ExMon.Player do
-  @requiredKeys [:life, :moves,  :name]
+  @requiredKeys [:life, :moves, :name]
   @maxLife 100
 
   @enforce_keys @requiredKeys
@@ -11,7 +11,7 @@ defmodule ExMon.Player do
       moves: %{
         moveAvg: moveAvg,
         moveHeal: moveHeal,
-        moveRand: moveRand,
+        moveRand: moveRand
       },
       name: name
     }
